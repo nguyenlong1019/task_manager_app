@@ -1,0 +1,36 @@
+1. Yêu cầu 1: Kết nối client-server bằng socket
+Mô tả: Sử dụng giao thức TCP/IP để tạo kết nối giữa client và server qua socket.
+Thực hiện:
+Tạo một server socket lắng nghe trên một cổng xác định.
+Client sẽ kết nối tới server qua IP và cổng.
+Giao thức sử dụng: TCP/IP giúp đảm bảo dữ liệu truyền giữa client và server được bảo mật và không bị mất gói.
+2. Yêu cầu 2: Ghi log các message nhận được và gửi đi bên server
+Mô tả: Server ghi lại các tin nhắn đã nhận từ client và phản hồi lại.
+Thực hiện:
+Tạo một file log để ghi nhận nội dung các message từ client gửi đến và từ server gửi đi.
+Sử dụng logging trong Python để dễ dàng lưu trữ và truy vết.
+Giao thức sử dụng: TCP/IP như ở trên để đảm bảo tin nhắn được truyền chính xác.
+3. Yêu cầu 3: Tạo tài khoản và xác thực người dùng
+Mô tả: Người dùng cần đăng ký tài khoản và đăng nhập để sử dụng ứng dụng.
+Thực hiện:
+Tạo cơ sở dữ liệu SQLite để lưu trữ thông tin tài khoản người dùng.
+Sử dụng mã hóa mật khẩu (hashing) để đảm bảo tính bảo mật của mật khẩu.
+Giao thức sử dụng: Giao thức bảo mật nội bộ với mã hóa mật khẩu và có thể áp dụng SSL nếu kết nối qua mạng.
+4. Yêu cầu 4: Tạo dự án mới và mời thành viên tham gia
+Mô tả: Cho phép người dùng tạo dự án mới và mời thành viên tham gia vào dự án.
+Thực hiện:
+Tạo các bảng trong cơ sở dữ liệu để quản lý thông tin dự án và danh sách thành viên tham gia.
+Cung cấp giao diện cho người dùng nhập thông tin dự án và mời các thành viên khác qua email hoặc ID.
+Giao thức sử dụng: HTTP (REST API) nếu ứng dụng có server trung gian xử lý việc mời và quản lý thành viên.
+5. Yêu cầu 5: Tạo công việc mới và gán cho thành viên
+Mô tả: Người dùng có thể tạo các công việc nhỏ trong dự án và gán chúng cho các thành viên cụ thể.
+Thực hiện:
+Tạo bảng “Tasks” trong cơ sở dữ liệu để lưu thông tin công việc, bao gồm trạng thái và người phụ trách.
+Cung cấp giao diện cho người quản lý dự án tạo công việc và chọn người thực hiện từ danh sách thành viên.
+Giao thức sử dụng: REST API để trao đổi dữ liệu về công việc giữa client và server nếu có nhu cầu phân tán.
+Công cụ và Thư viện đề xuất
+Socket Programming: Sử dụng thư viện socket của Python cho kết nối client-server.
+Logging: Thư viện logging để ghi log các message trao đổi.
+Database: SQLite để lưu trữ thông tin tài khoản, dự án và công việc. 
+
+Tkinter hoặc PyQt: Dùng để xây dựng giao diện desktop cho người dùng.

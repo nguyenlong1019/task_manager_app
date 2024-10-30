@@ -1,0 +1,108 @@
+Xây dựng ứng dụng quản lý công việc online 
+
+UI (PyQT nên dùng cái này nó dễ hơn, hoặc cũng có thể dùng tkinter)
+
+Chỉ dùng socket và logging trong python 
+Ghi log dạng sau
+Thư mục log
+ghi log theo từng ngày 
+mỗi loại log sẽ là một file riêng theo ngày ví dụ 
+log/
+    30_10_2024/
+        reg_log_30_10_2024.log   # reg ở đây ví dụ là register tức là action đăng ký tài khoản 
+
+ghi log các message nhận được và gửi đi bên server (tức là chỉ ghi log tại server)
+
+Tạo tài khoản và xác thực người dùng 
+Tạo dự án mới và thành viên tham gia 
+
+Phần tạo công việc này đổi thành chat 
+Tạo công việc với và gán cho thành viên hoặc có thể thay bằng chat cho đơn giản 
+
+
+
+Tạo file client gồm giao diện và giao tiếp với server bằng socket  
+
+Cơ sở dữ liệu SQLite 
+id (int auto increment)
+user sẽ có 3 phần 
+username (unique)
+password (lưu password hash vào sql)
+role (role là user hoặc admin) 
+
+server có thể là dạng console terminal hoặc giao diện (giao diện để xem log hoặc không cần thì bỏ đi)
+
+
+Mời user qua username 
+
+tạo dự án (tên dự án) và nhập danh sách các thành viên vào (có thể nhập username và phân cách nhau bằng dấu , hoặc ;)
+
+
+action và action type (còn gọi là message và message type giao tiếp với server) 
+đăng ký           reg <username> <password> 
+đăng nhập         login <username> <password> 
+đăng xuất         logout <token> 
+tạo dự án         new_project <token> <project_name> 
+thêm thành viên   add_group <token> <project_id> [<username1>, <username2>]
+chat trong nhóm   chat <token> <project_id> <message> 
+
+token dùng để xác thực người dùng khi lưu vào db sẽ có một token mã hóa username của người dùng và trả về cho nguời dùng
+Người dùng dùng token để có thể thực hiện các thao tác giao tiếp với server 
+có thể sử dụng thư viện PyJWT để mã hóa và giải mã token 
+
+pip install PyJWT 
+
+định cấu trúc gói tin dựa trên message type 
+
+Về giao diện 
+Phần admin có thể không cần giao diện mà chỉ cần một file server để xử lý các kết nối socket đến
+Sử dụng tcp nên để listen 100 connection cùng lúc 
+
+Phần client 
+Khi mở ứng dụng là giao diện trang đăng nhập, ng dùng có thể chuyển đến trang đăng ký 
+Sau khi đăng nhập vào có danh sách các dự án ng dùng quản lý hoặc trống 
+Có input cho project name và button tạo project, khi nhập name và nhấn tạo project sẽ tạo project và chuyển đến phần project chung
+Phần này nếu là chủ project có thể thêm user (có phần input và button thêm thành viên)
+và bên dưới là phần hiển thị log chat và có input cho chat 
+Các thành viên có thể gửi tin nhắn vào log chat 
+sẽ dạng: username: message - timestamp 
+
+database:
+users:
+    id (int auto increment)
+    username 
+    password 
+    có thể lưu token vào database 
+
+projects: 
+    id (int auto increment)
+    name (255 ky tu max)
+    owner int (foreign key den users)
+
+chats:
+    id (int auto increment)
+    room_id (foreign key đến project id của project)
+    user (foreign key đến bảng user) 
+    timestamp (thời điểm nhắn tin) để datetime auto now add cũng đc 
+
+khi vào một room truy vấn toàn bộ message theo room_id sẽ là lấy toàn bộ message sort theo timestamp từ cũ đến mới 
+
+message log lưu dạng sau:
+-------------------------------------------------------
+ActionName: ví dụ đăng ký
+ActionType: ví dụ register
+User: anonymus user nếu là đăng ký 
+MessageRequest: thông tin request gửi gói tin đến socket 
+MessageResponse: thông tin response gửi gói tin phản hồi từ server đến client 
+Timestamp: thời điểm
+-------------------------------------------------------
+
+Tự xác định các lỗi exception có thể xảy ra về các gói tin phản hồi ví dụ username tồn tại, sai password
+Khi thêm thành viên cũng v xác định xem có phải chủ phòng không 
+Rảnh thì làm thêm kick không thì thôi (tốt nhất là đell làm)
+
+
+Cái phần này để sau 
+Sau có thể làm nâng cao hơn ví dụ khi nguwofi dùng vào project và ra project có thông báo đến toàn bộ phòng 
+MÀY GÀ V QUANG Ạ 
+

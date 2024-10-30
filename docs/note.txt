@@ -1,0 +1,13 @@
+ Thiết kế Cấu Trúc Message
+Xác định cấu trúc của các tin nhắn để đảm bảo cả client và server hiểu được nội dung truyền tải. Ví dụ, mỗi message có thể bao gồm:
+	Loại message: Tin nhắn chat, yêu cầu công việc, thông báo trạng thái, v.v.
+	Nội dung: Text message hoặc JSON chứa dữ liệu chi tiết.
+	Timestamp: Thời gian tin nhắn được gửi để dễ dàng theo dõi.
+Để truyền message giữa client và server, tuần tự hóa dữ liệu thành một format chuẩn, dùng JSON.
+Ghi log giúp lưu lại lịch sử trao đổi để tiện truy vết và phân tích.
+Sử dụng thư viện logging trong Python để ghi lại cả tin nhắn gửi đi và nhận vào.
+Luồng message:
+Client gửi tin nhắn: Client tạo một JSON message chứa nội dung chat và gửi đến server.
+Server nhận và ghi log: Server nhận tin nhắn, ghi lại vào log, phân tích nội dung, và đưa vào hàng đợi xử lý.
+Server xử lý và phản hồi: Server xử lý nội dung tin nhắn, có thể gửi phản hồi xác nhận hoặc tin nhắn thông báo ngược lại cho client.
+Client nhận và xử lý phản hồi: Client nhận được phản hồi từ server, xử lý và ghi log nếu cần thiết.
