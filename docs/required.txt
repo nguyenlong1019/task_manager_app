@@ -1,0 +1,2 @@
+Kết nối client và server bằng socket python (chỉ dùng socket)
+ghi log các message nhận được và gửi đi bên server 
