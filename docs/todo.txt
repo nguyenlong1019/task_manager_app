@@ -102,6 +102,9 @@ Khi thêm thành viên cũng v xác định xem có phải chủ phòng không
 Rảnh thì làm thêm kick không thì thôi (tốt nhất là đell làm)
 
 
+Theo t thấy chỉ cần sử dụng các thư viện chuẩn python và thêm một thư viện PyJWT nếu cần mã hóa token (trong python cũng có thư viện mã hóa token và giải mã)
+Tốt nhất là chỉ dùng thư viện chuẩn và không cài thêm thư viện mới (trừ PyQT nếu dùng PyQT, dùng mỗi tkinter cũng đc)
+
 Cái phần này để sau 
 Sau có thể làm nâng cao hơn ví dụ khi nguwofi dùng vào project và ra project có thông báo đến toàn bộ phòng 
 MÀY GÀ V QUANG Ạ 
