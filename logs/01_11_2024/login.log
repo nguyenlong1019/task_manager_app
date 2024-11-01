@@ -5,3 +5,11 @@
 2024-11-01 07:14:25,735 - User logged in: nguyen long
 2024-11-01 07:28:26,023 - Failed login attempt: Invalid credentials for tk1.
 2024-11-01 07:28:29,448 - User logged in: tk1
+2024-11-01 09:03:11,679 - User logged in: tk12
+2024-11-01 09:03:23,990 - User logged in: tk13
+2024-11-01 09:07:21,232 - User logged in: tk20
+2024-11-01 09:07:56,283 - User logged in: tk21
+2024-11-01 09:11:37,970 - Failed login attempt: Invalid credentials for tk23.
+2024-11-01 09:11:42,407 - User logged in: tk23
+2024-11-01 09:11:58,819 - User logged in: tk24
+2024-11-01 09:13:38,916 - User logged in: tk23
